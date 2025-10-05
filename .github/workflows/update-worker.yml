@@ -100,6 +100,20 @@ jobs:
           git add .
           git commit -m "🔄 手动同步 Latest Worker：$LATEST_TAG"
           git push --force
+          
+     - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+
+      - name: Install dependencies
+        run: |
+          npm install -g javascript-obfuscator
+
+      - name: Clone BPB workjs
+        run: |
+          wget -O origin.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/refs/heads/main/build/unobfuscated-worker.js
+      
       - name: Obfuscate BPB worker js
         run: |
           javascript-obfuscator origin.js --output _worker.js \
