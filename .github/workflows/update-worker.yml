@@ -5,8 +5,7 @@ on:
     branches:
       - main
   schedule:
-  # Runs everyday at 1:00 AM
-        - cron: "0 1 * * *"
+         - cron: "0 1 * * *" # 每天凌晨1点自动运行
 
 permissions:
   contents: write
